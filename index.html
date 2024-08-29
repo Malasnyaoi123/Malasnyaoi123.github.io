@@ -14,6 +14,10 @@
             min-height: 100vh;
             background-color: #f4f4f4;
         }
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
         header {
             background-image: url('Gambar kimia.jpg');
             background-size: cover;
@@ -48,6 +52,9 @@
         nav {
             text-align: center;
             margin-bottom: 10px;
+        }
+        body.dark-mode nav{
+            background-color: #333333;
         }
         nav ul {
             list-style: none;
@@ -134,5 +141,26 @@
     <footer>
         <p>&copy; 2024 Kimia Jaya Jaya Jaya.</p>
     </footer>
+    <button id="dark-mode-toggle">Toggle Mode Gelap</button>
+<script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    toggleButton.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+});
+
+toggleButton.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('dark-mode', 'enabled');
+    } else {
+        localStorage.setItem('dark-mode', 'disabled');
+    }
+});
+</script>
 </body>
 </html>
